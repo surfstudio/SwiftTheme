@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // default: Red.plist
-        
-        ThemeManager.setTheme(plistName: "Red", path: .mainBundle)
-        
+
+        MyThemes.switchTo(.red)
+
         // status bar
         
         UIApplication.shared.themeSetStatusBarStyle("UIStatusBarStyle", animated: true)
@@ -28,8 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBar = UINavigationBar.appearance()
         
-        navigationBar.themeTintColor = "Global.barTextColor"
-        navigationBar.themeBarTintColor = "Global.barTintColor"
+        navigationBar.themeTintColor = Theme.Colors.barTextColor
+        navigationBar.themeBarTintColor = Theme.Colors.barTintColor
+
         navigationBar.themeTitleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
             guard let rgba = value as? String else {
                 return nil
@@ -50,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBar = UITabBar.appearance()
 
-        tabBar.themeTintColor = "Global.barTextColor"
-        tabBar.themeBarTintColor = "Global.barTintColor"
+        tabBar.themeTintColor = Theme.Colors.barTextColor
+        tabBar.themeBarTintColor = Theme.Colors.barTintColor
         
         return true
     }

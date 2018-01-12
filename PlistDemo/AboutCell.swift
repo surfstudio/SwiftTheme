@@ -15,7 +15,7 @@ class AboutCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        content.themeTextColor = "Global.textColor"
+        content.themeTextColor = Theme.Colors.text
     }
 
 }

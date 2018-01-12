@@ -18,8 +18,8 @@ class SwitchNightCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        title.themeTextColor = "Global.textColor"
-        nightIcon.themeImage = "SwitchNightCell.iconImage"
+        title.themeTextColor = Theme.Colors.text
+        nightIcon.themeImage = Theme.Images.switchNight
         
         updateNightSwitch()
         
