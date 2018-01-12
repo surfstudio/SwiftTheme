@@ -22,15 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // status bar
         
-        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        UIApplication.shared.themeSetStatusBarStyle("UIStatusBarStyle", animated: true)
         
         // navigation bar
         
         let navigationBar = UINavigationBar.appearance()
         
-        navigationBar.theme_tintColor = "Global.barTextColor"
-        navigationBar.theme_barTintColor = "Global.barTintColor"
-        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
+        navigationBar.themeTintColor = "Global.barTextColor"
+        navigationBar.themeBarTintColor = "Global.barTintColor"
+        navigationBar.themeTitleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
             guard let rgba = value as? String else {
                 return nil
             }
@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBar = UITabBar.appearance()
 
-        tabBar.theme_tintColor = "Global.barTextColor"
-        tabBar.theme_barTintColor = "Global.barTintColor"
+        tabBar.themeTintColor = "Global.barTextColor"
+        tabBar.themeBarTintColor = "Global.barTintColor"
         
         return true
     }

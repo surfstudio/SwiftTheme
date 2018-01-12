@@ -13,7 +13,7 @@ class SelectThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.themeBackgroundColor = GlobalPicker.backgroundColor
     }
     
     @IBAction @objc(tapRed:) func tapRed(_ sender: AnyObject) {

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.theme_backgroundColor = globalBackgroundColorPicker;
+    self.view.themeBackgroundColor = globalBackgroundColorPicker;
 }
 
 - (IBAction)tapRed:(id)sender {

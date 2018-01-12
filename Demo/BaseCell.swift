@@ -13,7 +13,7 @@ class BaseCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        themeBackgroundColor = GlobalPicker.backgroundColor
     }
 
 }

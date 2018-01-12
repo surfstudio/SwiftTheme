@@ -26,7 +26,7 @@
     
     ThemeStatusBarStylePicker *statusPicker = [ThemeStatusBarStylePicker pickerWithStringStyles:globalStatusBarStringStyles];
     
-    [[UIApplication sharedApplication] theme_setStatusBarStyle:statusPicker animated:YES];
+    [[UIApplication sharedApplication] themeSetStatusBarStyle:statusPicker animated:YES];
 
     // navigation bar
     
@@ -47,15 +47,15 @@
         [titleAttributes addObject:attr];
     }
     
-    navigationBar.theme_tintColor = globalBarTextColorPicker;
-    navigationBar.theme_barTintColor = globalBarTintColorPicker;
-    navigationBar.theme_titleTextAttributes = [ThemeDictionaryPicker pickerWithDicts:titleAttributes];
+    navigationBar.themeTintColor = globalBarTextColorPicker;
+    navigationBar.themeBarTintColor = globalBarTintColorPicker;
+    navigationBar.themeTitleTextAttributes = [ThemeDictionaryPicker pickerWithDicts:titleAttributes];
 
     // tab bar
     
     UITabBar *tabBar = [UITabBar appearance];
-    tabBar.theme_tintColor = globalBarTextColorPicker;
-    tabBar.theme_barTintColor = globalBarTintColorPicker;
+    tabBar.themeTintColor = globalBarTextColorPicker;
+    tabBar.themeBarTintColor = globalBarTintColorPicker;
     
     return YES;
 }
