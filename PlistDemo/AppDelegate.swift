@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // default: Red.plist
 
-        MyThemes.switchTo(.red)
+        MyThemes.initialize()
 
         // status bar
         

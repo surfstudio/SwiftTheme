@@ -20,8 +20,19 @@ enum MyThemes: Int {
     
     static var current = MyThemes.red
     static var before  = MyThemes.red
+
+    private static let defaultTheme = MyThemes.red
+    private static let themeIndexKey = "SwiftThemeIndexKey"
     
     // MARK: - Switch Theme
+
+    static func initialize() {
+        if let themeIndex = UserDefaults.standard.object(forKey: themeIndexKey) as? Int, let theme = MyThemes(rawValue: themeIndex) {
+            self.switchTo(theme)
+        } else {
+            self.switchTo(defaultTheme)
+        }
+    }
     
     static func switchTo(_ theme: MyThemes) {
         before  = current
@@ -33,6 +44,7 @@ enum MyThemes: Int {
         case .blue  : ThemeManager.setTheme(plistName: "Blue", path: .sandbox(blueDiretory))
         case .night : ThemeManager.setTheme(plistName: "Night", path: .mainBundle)
         }
+        UserDefaults.standard.set(theme.rawValue, forKey: themeIndexKey)
     }
     
     static func switchToNext() {
