@@ -15,7 +15,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.content.theme_textColor = globalTextColorPicker;
+    self.content.themeTextColor = globalTextColorPicker;
 }
 
 @end

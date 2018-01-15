@@ -17,20 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // default: Red.plist
-        
-        ThemeManager.setTheme(plistName: "Red", path: .mainBundle)
-        
+
+        MyThemes.switchTo(.red)
+
         // status bar
         
-        UIApplication.shared.theme_setStatusBarStyle("UIStatusBarStyle", animated: true)
+        UIApplication.shared.themeSetStatusBarStyle("UIStatusBarStyle", animated: true)
         
         // navigation bar
         
         let navigationBar = UINavigationBar.appearance()
         
-        navigationBar.theme_tintColor = "Global.barTextColor"
-        navigationBar.theme_barTintColor = "Global.barTintColor"
-        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
+        navigationBar.themeTintColor = Theme.Colors.barTextColor
+        navigationBar.themeBarTintColor = Theme.Colors.barTintColor
+
+        navigationBar.themeTitleTextAttributes = ThemeDictionaryPicker(keyPath: "Global.barTextColor") { value -> [NSAttributedStringKey : AnyObject]? in
             guard let rgba = value as? String else {
                 return nil
             }
@@ -50,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBar = UITabBar.appearance()
 
-        tabBar.theme_tintColor = "Global.barTextColor"
-        tabBar.theme_barTintColor = "Global.barTintColor"
+        tabBar.themeTintColor = Theme.Colors.barTextColor
+        tabBar.themeBarTintColor = Theme.Colors.barTintColor
         
         return true
     }

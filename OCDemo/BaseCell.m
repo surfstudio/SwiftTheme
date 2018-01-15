@@ -15,7 +15,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.theme_backgroundColor = globalBackgroundColorPicker;
+    self.themeBackgroundColor = globalBackgroundColorPicker;
 }
 
 @end

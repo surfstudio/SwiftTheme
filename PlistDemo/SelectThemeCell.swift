@@ -16,8 +16,8 @@ class SelectThemeCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        title.theme_textColor = "Global.textColor"
-        themeIcon.theme_image = "SelectThemeCell.iconImage"
+        title.themeTextColor = Theme.Colors.text
+        themeIcon.themeImage = Theme.Images.selectTheme
     }
 
 }

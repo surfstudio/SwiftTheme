@@ -13,7 +13,7 @@ class SelectThemeViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.theme_backgroundColor = "Global.backgroundColor"
+        view.themeBackgroundColor = Theme.Colors.background
     }
     
     @IBAction func tapRed(_ sender: AnyObject) {
