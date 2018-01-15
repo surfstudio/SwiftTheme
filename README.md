@@ -48,30 +48,30 @@ Make SwiftTheme a simple, powerful, high-performance, extensible themes/skinning
 Vary background color of UIView according to the theme setting:
 
 ```swift
-view.theme_backgroundColor = ["#FFF", "#000"]
+view.themeBackgroundColor = ["#FFF", "#000"]
 ```
 
 Vary text color of UILable and UIButton:
 
 ```swift
-label.theme_textColor = ["#000", "#FFF"]
-button.theme_setTitleColor(["#000", "#FFF"], forState: .Normal)
+label.themeTextColor = ["#000", "#FFF"]
+button.themeSetTitleColor(["#000", "#FFF"], forState: .Normal)
 ```
 
 Vary image of UIImageView:
 
 ```swift
-imageView.theme_image = ["day", "night"]
+imageView.themeImage = ["day", "night"]
 
 // It's ok by using UIImage instances if you don't want to use image names.
-imageView.theme_image = ThemeImagePicker(images: image1, image2)
+imageView.themeImage = ThemeImagePicker(images: image1, image2)
 ```
 
 A miracle happens after you execute the single line of code below!
 
 ```swift
 // these numbers represent the parameters' index. 
-// eg. "view.theme_backgroundColor = ["#FFF", "#000"]", index 0 represents "#FFF", index 1 represents "#000"
+// eg. "view.themeBackgroundColor = ["#FFF", "#000"]", index 0 represents "#FFF", index 1 represents "#000"
 ThemeManager.setTheme(index: isNight ? 1 : 0)
 ```
 
@@ -88,16 +88,16 @@ Notice About Literal:
 ```swift
 // Wrong example:
 let colors = ["#FFF", "#000"]
-view.theme_backgroundColor = colors
+view.themeBackgroundColor = colors
 
 // You should write like this:
-view.theme_backgroundColor = ["#FFF", "#000"]
+view.themeBackgroundColor = ["#FFF", "#000"]
 // or this:
 let colorPickers: ThemeColorPicker = ["#FFF", "#000"]
-view.theme_backgroundColor = colorPickers
+view.themeBackgroundColor = colorPickers
 ```
 
-> Because theme_backgroundColor accepts an argument of type ThemeColorPicker，not Array. Nevertheless, "view.theme_backgroundColor = ["#FFF", "#000"]" does the same as initializing an instance of ThemeColorPicker by "Literal" and passing it to the theme_backgroundColor.
+> Because themeBackgroundColor accepts an argument of type ThemeColorPicker，not Array. Nevertheless, "view.themeBackgroundColor = ["#FFF", "#000"]" does the same as initializing an instance of ThemeColorPicker by "Literal" and passing it to the themeBackgroundColor.
 
 
 
@@ -107,8 +107,8 @@ You may want to make your app download and install an indefinite number of theme
 Usage demo of plist mode.
 
 ```swift
-view.theme_backgroundColor = "Global.backgroundColor"
-imageView.theme_image = "SelectedThemeCell.iconImage"
+view.themeBackgroundColor = "Global.backgroundColor"
+imageView.themeImage = "SelectedThemeCell.iconImage"
 ```
 > Similar with the index mode. Only the specific parameters become keys. And as such, we give it the extension ability.
 
@@ -131,7 +131,7 @@ the screenshots of the plist and image files we used above:
 Fully compatible with Objective-C, usage demo:
 
 ```objective-c
-lbl.theme_backgroundColor = [ThemeColorPicker pickerWithColors:@[@"#FAF9F9", @"#E2E2E2"]];
+lbl.themeBackgroundColor = [ThemeColorPicker pickerWithColors:@[@"#FAF9F9", @"#E2E2E2"]];
 ```
 
 ### Features
@@ -139,7 +139,7 @@ lbl.theme_backgroundColor = [ThemeColorPicker pickerWithColors:@[@"#FAF9F9", @"#
 - [x] Fully compatible with Objective-C
 - [x] Based on runtime
 - [x] Simple integration
-- [x] Extension property prefix with "theme_*", friendly with IDE auto-completion
+- [x] Extension property prefix with "theme*", friendly with IDE auto-completion
 - [x] Support UIAppearance
 - [x] Index mode, fast integration
 - [x] Plist mode, extend infinite themes
@@ -173,21 +173,21 @@ Note：`①` usage of index mode `②` usage of plist mode
 
 #### Configure Appearance
 
-SwiftTheme provides new properties for views, they all beigin with `theme_`. Such as `theme_backgroundColor` corresponds `backgroundColor`.
+SwiftTheme provides new properties for views, they all beigin with `theme`. Such as `themeBackgroundColor` corresponds `backgroundColor`.
 
 ```swift
 ①
-view.theme_backgroundColor = ThemeColorPicker(colors: "#FFF", "#000")
-view.theme_image = ThemeImagePicker(names: "day", "night")
+view.themeBackgroundColor = ThemeColorPicker(colors: "#FFF", "#000")
+view.themeImage = ThemeImagePicker(names: "day", "night")
 ②
-view.theme_backgroundColor = ThemeColorPicker(keyPath: "SomeColorKeyPath")
-view.theme_image = ThemeImagePicker(keyPath: "SomeImageKeyPath")
+view.themeBackgroundColor = ThemeColorPicker(keyPath: "SomeColorKeyPath")
+view.themeImage = ThemeImagePicker(keyPath: "SomeImageKeyPath")
 ```
 > Different type of properties receive different type of Pickers. Thus, IDE will warn you if you pass a wrong parameter.
 
 #### Switch Themes
 
-When you switch themes, all the `theme_` properties you set will update with animation. Usage:
+When you switch themes, all the `theme` properties you set will update with animation. Usage:
 
 ```swift
 ①
@@ -222,87 +222,87 @@ NotificationCenter.default.addObserver(
 ### *Now Supported Properties*
 ***
 
-> Child classes inherit the properties from their super class, such as UILabel have theme_alpha inherited from UIView. These properties will not be list in child classes below.
+> Child classes inherit the properties from their super class, such as UILabel have themealpha inherited from UIView. These properties will not be list in child classes below.
 
 ##### UIView
-- var theme_alpha: ThemeCGFloatPicker?
-- var theme_backgroundColor: ThemeColorPicker?
-- var theme_tintColor: ThemeColorPicker?
+- var themeAlpha: ThemeCGFloatPicker?
+- var themeBackgroundColor: ThemeColorPicker?
+- var themeTintColor: ThemeColorPicker?
 
 ##### UIApplication
-- func theme_setStatusBarStyle(picker: ThemeStatusBarStylePicker, animated: Bool)
+- func themeSetStatusBarStyle(picker: ThemeStatusBarStylePicker, animated: Bool)
 
 ##### UIBarButtonItem
-- var theme_tintColor: ThemeColorPicker?
+- var themeTintColor: ThemeColorPicker?
 
 ##### UILabel
-- var theme_font: ThemeFontPicker?
-- var theme_textColor: ThemeColorPicker?
-- var theme_highlightedTextColor: ThemeColorPicker?
-- var theme_shadowColor: ThemeColorPicker?
+- var themeFont: ThemeFontPicker?
+- var themeTextColor: ThemeColorPicker?
+- var themeHighlightedTextColor: ThemeColorPicker?
+- var themeShadowColor: ThemeColorPicker?
 
 ##### UINavigationBar
-- var theme_barStyle: ThemeBarStylePicker?
-- var theme_barTintColor: ThemeColorPicker?
-- var theme_titleTextAttributes: ThemeDictionaryPicker?
+- var themeBarStyle: ThemeBarStylePicker?
+- var themeBarTintColor: ThemeColorPicker?
+- var themeTitleTextAttributes: ThemeDictionaryPicker?
 
 ##### UITabBar
-- var theme_barStyle: ThemeBarStylePicker?
-- var theme_barTintColor: ThemeColorPicker?
+- var themeBarStyle: ThemeBarStylePicker?
+- var themeBarTintColor: ThemeColorPicker?
 
 ##### UITableView
-- var theme_separatorColor: ThemeColorPicker?
+- var themeSeparatorColor: ThemeColorPicker?
 
 ##### UITextField
-- var theme_font: ThemeFontPicker?
-- var theme_keyboardAppearance: ThemeKeyboardAppearancePicker?
-- var theme_textColor: ThemeColorPicker?
+- var themeFont: ThemeFontPicker?
+- var themeKeyboardAppearance: ThemeKeyboardAppearancePicker?
+- var themeTextColor: ThemeColorPicker?
 
 ##### UITextView
-- var theme_font: ThemeFontPicker?
-- var theme_textColor: ThemeColorPicker?
+- var themeFont: ThemeFontPicker?
+- var themeTextColor: ThemeColorPicker?
 
 ##### UIToolbar
-- var theme_barStyle: ThemeBarStylePicker?
-- var theme_barTintColor: ThemeColorPicker?
+- var themeBarStyle: ThemeBarStylePicker?
+- var themeBarTintColor: ThemeColorPicker?
 
 ##### UISwitch
-- var theme_onTintColor: ThemeColorPicker?
-- var theme_thumbTintColor: ThemeColorPicker?
+- var themeOnTintColor: ThemeColorPicker?
+- var themeThumbTintColor: ThemeColorPicker?
 
 ##### UISlider
-- var theme_thumbTintColor: ThemeColorPicker?
-- var theme_minimumTrackTintColor: ThemeColorPicker?
-- var theme_maximumTrackTintColor: ThemeColorPicker?
+- var themeThumbTintColor: ThemeColorPicker?
+- var themeMinimumTrackTintColor: ThemeColorPicker?
+- var themeMaximumTrackTintColor: ThemeColorPicker?
 
 ##### UISearchBar
-- var theme_barStyle: ThemeBarStylePicker?
-- var theme_barTintColor: ThemeColorPicker?
+- var themeBarStyle: ThemeBarStylePicker?
+- var themeBarTintColor: ThemeColorPicker?
 
 ##### UIProgressView
-- var theme_progressTintColor: ThemeColorPicker?
-- var theme_trackTintColor: ThemeColorPicker?
+- var themeProgressTintColor: ThemeColorPicker?
+- var themeTrackTintColor: ThemeColorPicker?
 
 ##### UIPageControl
-- var theme_pageIndicatorTintColor: ThemeColorPicker?
-- var theme_currentPageIndicatorTintColor: ThemeColorPicker?
+- var themePageIndicatorTintColor: ThemeColorPicker?
+- var themeCurrentPageIndicatorTintColor: ThemeColorPicker?
 
 ##### UIImageView
-- var theme_image: ThemeImagePicker?
+- var themeImage: ThemeImagePicker?
 
 ##### UIActivityIndicatorView
-- var theme_activityIndicatorViewStyle: ThemeActivityIndicatorViewStylePicker?
+- var themeActivityIndicatorViewStyle: ThemeActivityIndicatorViewStylePicker?
 
 ##### UIButton
-- func theme_setImage(picker: ThemeImagePicker, forState state: UIControlState)
-- func theme_setBackgroundImage(picker: ThemeImagePicker, forState state: UIControlState)
-- func theme_setTitleColor(picker: ThemeColorPicker, forState state: UIControlState)
+- func themeSetImage(picker: ThemeImagePicker, forState state: UIControlState)
+- func themeSetBackgroundImage(picker: ThemeImagePicker, forState state: UIControlState)
+- func themeSetTitleColor(picker: ThemeColorPicker, forState state: UIControlState)
 
 ##### CALayer
-- var theme_backgroundColor: ThemeCGColorPicker?
-- var theme_borderWidth: ThemeCGFloatPicker?
-- var theme_borderColor: ThemeCGColorPicker?
-- var theme_shadowColor: ThemeCGColorPicker?
+- var themeBackgroundColor: ThemeCGColorPicker?
+- var themeBorderWidth: ThemeCGFloatPicker?
+- var themeBorderColor: ThemeCGColorPicker?
+- var themeShadowColor: ThemeCGColorPicker?
 
 ### *Picker*
 ***
@@ -430,13 +430,13 @@ Download this project and find more. There are two demo targets:
 
 ## FAQ
 
-1.  Why doesn't theme_setStatusBarStyle work as expected?
+1.  Why doesn't themeSetStatusBarStyle work as expected?
 
     In your app's `Info.plist` you will need to set `View Controller-based status bar appearence` to `NO`.
     
 2.  Can I manually cancel the theme of a property?
 
-    Sure, just make it `nil`—example: `view.theme_backgroundColor = nil`.
+    Sure, just make it `nil`—example: `view.themeBackgroundColor = nil`.
 
 ## Contribution
 
