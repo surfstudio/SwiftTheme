@@ -85,10 +85,10 @@ public enum UIColorInputError : Error {
      */
     public convenience init(hex8: UInt32) {
         let divisor = CGFloat(255)
-        let red     = CGFloat((hex8 & 0xFF000000) >> 24) / divisor
-        let green   = CGFloat((hex8 & 0x00FF0000) >> 16) / divisor
-        let blue    = CGFloat((hex8 & 0x0000FF00) >>  8) / divisor
-        let alpha   = CGFloat( hex8 & 0x000000FF       ) / divisor
+        let alpha     = CGFloat((hex8 & 0xFF000000) >> 24) / divisor
+        let red   = CGFloat((hex8 & 0x00FF0000) >> 16) / divisor
+        let green    = CGFloat((hex8 & 0x0000FF00) >>  8) / divisor
+        let blue   = CGFloat( hex8 & 0x000000FF       ) / divisor
         
         if #available(iOS 10.0, *) {
             self.init(displayP3Red: red, green: green, blue: blue, alpha: alpha)
