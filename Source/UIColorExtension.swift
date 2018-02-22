@@ -42,16 +42,16 @@ public enum UIColorInputError : Error {
     
     /**
      The shorthand four-digit hexadecimal representation of color with alpha.
-     #RGBA defines to the color #RRGGBBAA.
+     #RGBA defines to the color #AARRGGBB.
      
      - parameter hex4: Four-digit hexadecimal value.
      */
     public convenience init(hex4: UInt16) {
         let divisor = CGFloat(15)
-        let red     = CGFloat((hex4 & 0xF000) >> 12) / divisor
-        let green   = CGFloat((hex4 & 0x0F00) >>  8) / divisor
-        let blue    = CGFloat((hex4 & 0x00F0) >>  4) / divisor
-        let alpha   = CGFloat( hex4 & 0x000F       ) / divisor
+        let alpha     = CGFloat((hex4 & 0xF000) >> 12) / divisor
+        let red   = CGFloat((hex4 & 0x0F00) >>  8) / divisor
+        let green    = CGFloat((hex4 & 0x00F0) >>  4) / divisor
+        let blue   = CGFloat( hex4 & 0x000F       ) / divisor
         
         if #available(iOS 10.0, *) {
             self.init(displayP3Red: red, green: green, blue: blue, alpha: alpha)
@@ -98,7 +98,7 @@ public enum UIColorInputError : Error {
     }
     
     /**
-     The rgba string representation of color with alpha of the form #RRGGBBAA/#RRGGBB, throws error.
+     The rgba string representation of color with alpha of the form #AARRGGBB/#RRGGBB, throws error.
      
      - parameter rgba: String value.
      */
