@@ -79,7 +79,7 @@ public enum UIColorInputError : Error {
     }
     
     /**
-     The six-digit hexadecimal representation of color with alpha of the form #RRGGBBAA.
+     The six-digit hexadecimal representation of color with alpha of the form #AARRGGBB.
      
      - parameter hex8: Eight-digit hexadecimal value.
      */
