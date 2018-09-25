@@ -192,15 +192,15 @@ import UIKit
 }
 @objc public extension UIButton
 {
-    func themeSetImage(_ picker: ThemeImagePicker?, forState state: UIControlState) {
+    func themeSetImage(_ picker: ThemeImagePicker?, forState state: UIControl.State) {
         let statePicker = makeStatePicker(self, "setImage:forState:", picker, state)
         setThemePicker(self, "setImage:forState:", statePicker)
     }
-    func themeSetBackgroundImage(_ picker: ThemeImagePicker?, forState state: UIControlState) {
+    func themeSetBackgroundImage(_ picker: ThemeImagePicker?, forState state: UIControl.State) {
         let statePicker = makeStatePicker(self, "setBackgroundImage:forState:", picker, state)
         setThemePicker(self, "setBackgroundImage:forState:", statePicker)
     }
-    func themeSetTitleColor(_ picker: ThemeColorPicker?, forState state: UIControlState) {
+    func themeSetTitleColor(_ picker: ThemeColorPicker?, forState state: UIControl.State) {
         let statePicker = makeStatePicker(self, "setTitleColor:forState:", picker, state)
         setThemePicker(self, "setTitleColor:forState:", statePicker)
     }
@@ -300,7 +300,7 @@ private func makeStatePicker(
     _ object : NSObject,
     _ selector : String,
     _ picker : ThemePicker?,
-    _ state : UIControlState
+    _ state : UIControl.State
 ) -> ThemePicker? {
     
     var picker = picker
